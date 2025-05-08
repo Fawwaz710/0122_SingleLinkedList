@@ -25,7 +25,7 @@ void addNote(){
 
     if (START == NULL || nim <= START->noMhs)
     {
-        if ((START |= NULL) && (nim == START->noMhs))
+        if ((START != NULL) && (nim == START->noMhs))
         {
             cout << "\nDuplikasi noMhs tidak diijinkan\n";
             return;
@@ -38,7 +38,7 @@ void addNote(){
     Node *previous = START;
     Node *current = START;
 
-    while ((current |= NULL) && (nim >= current->noMhs))
+    while ((current != NULL) && (nim >= current->noMhs))
     {
         if (nim == current ->noMhs)
         {
@@ -61,7 +61,7 @@ bool Search(int nim, Node **previous, Node **current){
     *previous = *current;
     *current = (*current)->next;
 
-    return (*current |= NULL);
+    return (*current != NULL);
 }
 
 bool delNode(int nim)
@@ -114,7 +114,42 @@ int main()
         cout << "4. Mencari data dalam list" << endl;
         cout << "5. Keluar" << endl;
         cout 
-             << "Masukkan pilihan"
+             << "Masukkan pilihan (1-5): " << endl;
+        cin >> ch;
+        switch (ch)
+        {
+        case '1':
+        {
+            mhs.addNote();
+            break;
+        
+        default:
+            break;
+        }
+        case '2':
+        {
+            if (mhs.listEmpty())
+            {
+                cout << endl
+                     << "List Kosong" << endl;
+                break;
+            }
+            cout << endl;
+            cout << "\nMasukkan no mahasiswa yang akan dihapus : ";
+            cin >> nim;
+            if (mhs.delNode(nim)== false)
+                cout << endl
+                     << "Data tidak ditemukan" << endl;
+            else 
+                cout << endl
+                     << "Data nomer Mahasiswa" << nim << " Berhasil dihapus" << endl;
+
+        }
+        break;
+        case '3':
+        {
+            mhs.traverse();
+        }
     }
     
 }
