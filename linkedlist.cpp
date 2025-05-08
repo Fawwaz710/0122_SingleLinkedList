@@ -150,9 +150,6 @@ int main()
         {
             mhs.traverse();
         }
-    }
-    
-}
+        break;
 
-
-};
+        case '4':
